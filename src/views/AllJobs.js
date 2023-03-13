@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ScreenWrapper from '../components/ScreenWrapper'
 
 const AllJobs = () => {
   return (
-    <View>
+    <ScreenWrapper>
+        <View>
+            
       <Text>AllJobs</Text>
-    </View>
+        </View>
+    </ScreenWrapper>
   )
 }
 

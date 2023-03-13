@@ -1,10 +1,10 @@
 import { Platform, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ScreenWrapper = () => {
+const ScreenWrapper = ({children}) => {
   return (
     <View style={styles.screenWrapper}>
-      <Text>ScreenWrapper</Text>
+      {children}
     </View>
   )
 }
@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
         paddingTop:Platform.OS === 'ios' ? 60 : 0,
         paddingHorizontal:24,
         paddingBottom:32,
-        backgroundColor:"red",
         minHeight:'100%',
     }
 })

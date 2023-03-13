@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
+
 const MyJobs = () => {
   return (
-    <View>
+    <ScreenWrapper>
       <Text>MyJobs</Text>
-    </View>
+    </ScreenWrapper>
   )
 }
 
