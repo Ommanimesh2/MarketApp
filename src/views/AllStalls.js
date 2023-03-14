@@ -14,7 +14,7 @@ import { Context } from "../context/Context";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
 import { Alert } from "react-native";
-
+import MapDrawer from "../components/MapDrawer";
 const AllStalls = ({ navigation }) => {
   state = {
     ready: false,
@@ -42,7 +42,7 @@ const AllStalls = ({ navigation }) => {
       }),
     ]).start();
   };
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   let { slideUpValue, fadeValue, SlideInLeft } = this.state;
   const [region, setRegion] = useState({
     latitude: 51.5079145,
@@ -91,9 +91,6 @@ const AllStalls = ({ navigation }) => {
         <Button
           title="Your Stalls"
           color={"#41543B"}
-          onPress={() => {
-            navigation.navigate("Settings");
-          }}
         />
       </View>
       <View style={styles.container}>
@@ -104,19 +101,25 @@ const AllStalls = ({ navigation }) => {
                 {
                   translateY: SlideInLeft.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [450, 700],
+                    outputRange: [350, 700],
                   }),
                 },
               ],
               flex: 1,
-              height: 250,
-              width: 800,
-              borderRadius: 12,
+              height: 350,
+              width: 390,
+              borderTopEndRadius:52,
+              borderTopStartRadius:52,
               position: "absolute",
-              backgroundColor: "#347a2a",
-              justifyContent: "center",
+              left:0,
+              alignItems:'center',
+            
+              backgroundColor: "#41543B",
+              
             }}
-          ></Animated.View>
+          >
+            <MapDrawer/>
+          </Animated.View>
         ) : (
           <Animated.View
             style={{
@@ -133,8 +136,7 @@ const AllStalls = ({ navigation }) => {
               width: 300,
               borderRadius: 12,
               position: "absolute",
-
-              backgroundColor: "#347a2a",
+              backgroundColor: "#41543B",
               justifyContent: "center",
             }}
           ></Animated.View>
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
   text: {
     position: "absolute",
     right: 6,
-    bottom: 240,
+    bottom: 290,
     padding: 10,
   },
   text1: {

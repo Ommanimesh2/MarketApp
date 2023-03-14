@@ -8,93 +8,16 @@ import {
   Animated,
   TouchableOpacity
 } from "react-native";
-
+import MachineCard from "../components/MachineCard";
 const Home = () => {
-  state = {
-    ready: false,
-    SlideInLeft: new Animated.Value(0),
-    slideUpValue: new Animated.Value(0),
-    fadeValue: new Animated.Value(0),
-  };
-
-  _start = () => {
-    return Animated.parallel([
-      Animated.timing(this.state.SlideInLeft, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true
-      }),
-      Animated.timing(this.state.fadeValue, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true
-      }),
-      Animated.timing(this.state.slideUpValue, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true
-      })
-    ]).start();
-  };
   const {data,setData}=useContext(Context)
 
   const [show,setShow]=useState(true)
-  let { slideUpValue, fadeValue, SlideInLeft } = this.state;
   return (
     <ScreenWrapper>
-      <View  style={styles.container}>
-      <TouchableOpacity style={styles.btn} onPress={() => {
-        this._start()
-        }}>
-          <Text onPress={()=>{
-               if(show)setShow(false)
-               else setShow(true)
-          }} style={styles.textBtn}>Start</Text>
-        </TouchableOpacity>
-        { 
-        show ?  <Animated.View
-        style={{
-          transform: [
-            {
-              translateY: SlideInLeft.interpolate({
-                inputRange: [0, 1],
-                outputRange: [200, 200]
-              })
-
-            }
-          ],
-          flex: 1,
-          height: 150,
-          width: 300,
-          borderRadius: 12,
-          backgroundColor: "#347a2a",
-          justifyContent: "center"
-        }}
-      >
-        <Text style={styles.text}>SlideInLeft </Text>
-      </Animated.View> :  <Animated.View
-          style={{
-            transform: [
-              {
-                translateY: SlideInLeft.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [200, 300]
-                })
-
-              }
-            ],
-            flex: 1,
-            height: 150,
-            width: 300,
-            borderRadius: 12,
-            backgroundColor: "#347a2a",
-            justifyContent: "center"
-          }}
-        >
-          <Text style={styles.text}>SlideInLeft </Text>
-        </Animated.View>
-        }
-      </View>
+     <View>
+      <MachineCard/>
+     </View>
     </ScreenWrapper>
   );
 };
