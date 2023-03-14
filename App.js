@@ -4,13 +4,23 @@ import { NavigationContainer } from '@react-navigation/native'
 import Routes from './src/routes/routes'
 import { Context } from './src/context/Context'
 import { ContextProvider } from './src/context/Context'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Login from './src/views/Login'
+import CreateAccount from './src/views/CreateAccount'
 
 const App = () => {
-  return (
+
+  const Stack = createNativeStackNavigator();
+
+ return (
     <ContextProvider>
 
     <NavigationContainer>
-        <Routes/>
+      <Stack.Navigator>
+        <Stack.Screen name="login" component={Login} />
+        <Stack.Screen name="signup" component={CreateAccount} />
+        <Stack.Screen name="MainScreens" component={Routes}/>
+      </Stack.Navigator>
     </NavigationContainer>
     </ContextProvider>
   )

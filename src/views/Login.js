@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
 import React from 'react'
 import ScreenWrapper from '../components/ScreenWrapper'
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <ScreenWrapper>
 
-    <View>
+    <View >
+      <Button title='thi' onPress={()=>navigation.navigate("h")}></Button>
       <Text>Login</Text>
     </View>
     </ScreenWrapper>
