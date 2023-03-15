@@ -71,8 +71,10 @@ const AllStalls = ({ navigation }) => {
           longitude: -122.4324,
           latitudeDelta: 0.0,
           longitudeDelta: 0.0,
+        
         }}
         onRegionChangeComplete={(region) => setRegion(region)}
+        showsUserLocation={true}
       >
         <Marker
           onPress={() => {
