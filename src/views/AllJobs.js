@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
+
 import ScreenWrapper from '../components/ScreenWrapper'
 import MachineCard from '../components/MachineCard'
 
