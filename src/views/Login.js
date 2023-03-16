@@ -8,11 +8,6 @@ import { Context } from "../context/Context";
 import * as Location from 'expo-location';
 
 const Login = ({navigation}) => {
-
-  //  console.log(route.params.key)
-  //  useEffect(()=>{
-  //  console.log(locatio)
-  //  },[locatio])
   const {location, setLocation}=useContext(Context)
   
   useEffect(() => {
@@ -33,17 +28,7 @@ const Login = ({navigation}) => {
     })();
   }, [location]);
 
-  const initialState = {
-    firstName: "",
-    lastName: "",
-    userName: "",
-    password: "",
-    confirmpass: "",
-  };
-  const [data, setData] = useState(initialState);
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
+
 
   const LoginUser = async (e) => {
     const response = await fetch("http://localhost:4000/auth/login", {
