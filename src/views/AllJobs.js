@@ -1,22 +1,20 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet,Button, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 
 import ScreenWrapper from '../components/ScreenWrapper'
 import MachineCard from '../components/MachineCard'
-
-const AllJobs = () => {
+import Jobviewcard from '../components/Jobviewcard'
+const AllJobs = ({navigation}) => {
   return (
     <ScreenWrapper>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.app}>
-            
-     <MachineCard />
-     <MachineCard />
-     <MachineCard />
-     <MachineCard />
-     <MachineCard />
+   <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.app}>
+      <Jobviewcard src={require(`..//../assets/phone.png`)}/>
 
+   </ScrollView>
+   <View style={styles.button}>
 
-        </ScrollView>
+     <Button onPress={()=>navigation.navigate('MyJobs')} color='#41543B'  title="Your Jobs"/>
+   </View>
     </ScreenWrapper>
   )
 }
@@ -25,22 +23,14 @@ export default AllJobs
 
 const styles = StyleSheet.create({
   app: {
-    width: 400,
-    flexDirection: "row",
+    display:'flex',
+    flexDirection: "column",
     flexWrap: "wrap"
   },
-  item: {
-    flex: 1,
-    minWidth: 100,
-    maxWidth: 100,
-    height: 100,
-    justifyContent: "center",
-    alignItems: "center",
-
-    // my visual styles; not important for grid
-
-    backgroundColor: "rgba(249, 180, 45, 0.25)",
-    borderWidth: 1.5,
-    borderColor: "#fff"
+  button:{
+    position:'absolute',
+    right:18,
+    bottom:10,
+    borderRadius: 8,
   }
 })

@@ -2,9 +2,9 @@ import React from 'react'
 import ScreenWrapper from '../components/ScreenWrapper'
 import { StyleSheet,Image, Text, View,Pressable } from 'react-native'
 
-const Jobviewcard = () => {
+const Jobviewcard = ({src}) => {
+  console.log(src)
   return (
-    <ScreenWrapper>
       <View style={styles.Jobcontainer}>
         <View style={styles.JobHeadercontainer}>
         
@@ -27,7 +27,7 @@ style={styles.imagecontainer}
      </View>
      <Image
 style={styles.imagecall}
- source={require("..//../assets/phone.png")}
+ source={src}
  ></Image>
         </View>
   <View style={styles.footer}>
@@ -44,7 +44,6 @@ style={styles.imagelocate}
         </View>
         </View>
      </View>
-    </ScreenWrapper>
   )
 }
 
@@ -52,8 +51,7 @@ export default Jobviewcard
 
 const styles = StyleSheet.create({
   Jobcontainer:{
-    width:'110%',
-    marginLeft:-20,
+    width:'100%',
     height:180,
     backgroundColor: '#F9FCFE',
 borderColor: '#E0E6EF',
@@ -76,14 +74,12 @@ margin:15,
 
  },
  jobno:{
-  fontFamily: 'Inter',
   fontStyle: 'normal',
   fonteight: 700,
   fontSize: 17,
   color: '#8CDA8C',
  },
  jobname:{
-  fontFamily: 'Inter',
 fontStyle: 'normal',
 fontWeight: 400,
 fontSize: 16,

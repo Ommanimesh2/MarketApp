@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
      marginTop:50,
     },
    profinputtext:{
-    fontFamily: 'Poppins',
+
     fontStyle: 'normal',
     fontWeight: 500,
     fontSize: 14,
    },
    profinputtext:{
-    fontFamily: 'Poppins',
+
     fontStyle: 'normal',
     fontWeight: 500,
     margin:15,

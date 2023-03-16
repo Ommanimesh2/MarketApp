@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, Pressable ,TextInput,Alert} from 'react-native';
 import React from 'react'
 import ScreenWrapper from '../components/ScreenWrapper'
-
-
-const CreateAccount = () => {
+import { useContext } from 'react';
+import { Context } from '../context/Context';
+const CreateAccount = ({navigation}) => {
   const initialState = {
     firstName: "",
     lastName: "",
@@ -12,7 +12,7 @@ const CreateAccount = () => {
     confirmpass: "",
   };
   
-  const {user,setUser}=useContext(dataContext);
+  const {user,setUser}=useContext(Context);
   
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -54,7 +54,7 @@ const CreateAccount = () => {
                autoCapitalize = "none"
               />
               <View style = {styles.signin}>
-              <Pressable style={styles.signbutton} onPress={()=>{navigation.navigate('MainScreens')}} >
+              <Pressable style={styles.signbutton} onPress={()=>{navigation.navigate('MainScreens')}}>
       <Text style={styles.text}>Sign Up</Text>
     </Pressable>
               </View>
@@ -70,7 +70,6 @@ export default CreateAccount
 
 const styles = StyleSheet.create({
     signheading: {
-        fontFamily: 'Inter',
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: 32,

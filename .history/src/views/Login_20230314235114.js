@@ -60,7 +60,7 @@ width:'44%',
 height:'26%',
 },
 para:{
-  fontFamily: 'Outfit',
+
   fontStyle: 'normal',
   fontWeight: '400',
   fontSize: 16,

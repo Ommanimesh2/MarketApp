@@ -74,14 +74,14 @@ margin:15,
 
  },
  jobno:{
-  fontFamily: 'Inter',
+
   fontStyle: 'normal',
-  fonteight: 700,
+  fontWeight: 700,
   fontSize: 17,
   color: '#8CDA8C',
  },
  jobname:{
-  fontFamily: 'Inter',
+
 fontStyle: 'normal',
 fontWeight: 400,
 fontSize: 16,

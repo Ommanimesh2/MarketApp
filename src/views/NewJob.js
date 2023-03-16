@@ -120,7 +120,7 @@ bodynewjob:{
 marginTop:-50,
 },
 newjobinputtext:{
-  fontFamily: 'Poppins',
+
   fontStyle: 'normal',
   fontWeight: 500,
   margin:15,
