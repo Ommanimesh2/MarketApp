@@ -103,6 +103,7 @@ const {location, setLocation}=useContext(Context)
             console.log("object");
           }}
           coordinate={userLocation}
+          image={require("../../assets/Marker.png")}
         />
       </MapView>
       <View style={show ? styles.text : styles.text1}>
