@@ -5,8 +5,9 @@ const Context = React.createContext();
 const ContextProvider = ({ children }) => {
   const [data, setData] = useState("");
   const [user,setUser]=useState([])
+  const [location, setLocation]=useState(null)
   return (
-    <Context.Provider value={{ data, setData,user,setUser }}>{children}</Context.Provider>
+    <Context.Provider value={{ data, setData,user,setUser, location, setLocation }}>{children}</Context.Provider>
   );
 };
 

@@ -14,8 +14,15 @@ import { Context } from "../context/Context";
 import MapView from "react-native-maps";
 import { Marker } from "react-native-maps";
 import { Alert } from "react-native";
+import { useEffect } from "react";
 import MapDrawer from "../components/MapDrawer";
+import Header from "../components/Header";
+
 const AllStalls = ({ navigation }) => {
+const {location, setLocation}=useContext(Context)
+
+
+
   state = {
     ready: false,
     SlideInLeft: new Animated.Value(0),
@@ -45,8 +52,14 @@ const AllStalls = ({ navigation }) => {
   const [show, setShow] = useState(false);
   let { slideUpValue, fadeValue, SlideInLeft } = this.state;
   const [region, setRegion] = useState({
-    latitude: 51.5079145,
-    longitude: -0.0899163,
+    latitude: 22.9734,
+    longitude: 78.6569,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  });
+  const [userLocation, setUserLocation] = useState({
+    latitude:location ? location.coords.latitude : 51.5079145,
+    longitude:location ? location.coords.longitude : -0.0899163,
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   });
@@ -63,18 +76,21 @@ const AllStalls = ({ navigation }) => {
     console.log("adf");
   };
   return (
-    <View style={styles.containerTop}>
+   userLocation ? 
+<View style={styles.containerTop}>
+
+
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 22.9734,
+          longitude: 78.6569,
           latitudeDelta: 0.0,
           longitudeDelta: 0.0,
         
         }}
         onRegionChangeComplete={(region) => setRegion(region)}
-        showsUserLocation={true}
+ 
       >
         <Marker
           onPress={() => {
@@ -86,7 +102,7 @@ const AllStalls = ({ navigation }) => {
             this._start();
             console.log("object");
           }}
-          coordinate={region}
+          coordinate={userLocation}
         />
       </MapView>
       <View style={show ? styles.text : styles.text1}>
@@ -144,7 +160,9 @@ const AllStalls = ({ navigation }) => {
           ></Animated.View>
         )}
       </View>
-    </View>
+    </View> : <Text>kdsalfj</Text>
+
+
   );
 };
 

@@ -5,7 +5,9 @@ import AllJobs from '../views/AllJobs';
 import Ionicons from '@expo/vector-icons/Ionicons'
 import AllRentMachines from '../views/AllRentMachines';
 import AllStalls from '../views/AllStalls';
+import Login from '../views/Login';
 import Home from '../views/Home';
+import NewJob from '../views/NewJob';
 const Tab=createBottomTabNavigator()
 
 const Routes = () => {
@@ -23,7 +25,8 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Jobs' ,
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',            
+       tabBarInactiveTintColor: 'gray',
+       headerShown:false            
       }}
     />
     <Tab.Screen 
@@ -36,9 +39,11 @@ const Routes = () => {
             source={require('../../assets/Machines.png')                  
             }/>
        ), 
+       
        tabBarActiveTintColor: 'green',
        tabBarInactiveTintColor: 'gray',
-       tabBarLabel: 'Rent'             
+       tabBarLabel: 'Rent'        ,
+       headerShown:false     
       }}
     />
     <Tab.Screen 
@@ -53,7 +58,8 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Add',
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',             
+       tabBarInactiveTintColor: 'gray',
+       headerShown:false             
       }}
     />
     <Tab.Screen 
@@ -68,12 +74,13 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Stalls'   ,
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',          
+       tabBarInactiveTintColor: 'gray',
+       headerShown:false          
       }}
     />
     <Tab.Screen 
     name="Labour" 
-    component={AllJobs} 
+    component={NewJob} 
     options={{
         tabBarIcon: ({ color }) => (
           <Image
@@ -83,7 +90,8 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Labours'  ,
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',           
+       tabBarInactiveTintColor: 'gray', 
+       headerShown:false          
       }}
     />
 
