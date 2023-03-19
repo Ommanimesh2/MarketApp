@@ -93,7 +93,7 @@ const CreateAccount = ({ navigation }) => {
       </View>
       <Text style={styles.last}>
         dont have an account?
-        <Text style={styles.textlogin } onPress={()=>navigation.navigate("MainScreens")}>Create One</Text>
+        <Text style={styles.textlogin } onPress={()=>navigation.navigate("signup")}>Create One</Text>
       </Text>
     </View> :  <View style={[styles.that, styles.horizontal]}>
               <ActivityIndicator size="large" color="#00ff00" />

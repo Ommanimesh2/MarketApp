@@ -63,6 +63,30 @@ const {location, setLocation}=useContext(Context)
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   });
+  const [loc1, setloc1] = useState({
+    latitude:30.316496,
+    longitude:78.032188,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  });
+  const [loc2, setloc2] = useState({
+    latitude:29.854263,
+    longitude:77.888000,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  });
+  const [loc3, setloc3] = useState({
+    latitude:29.945690,
+    longitude:78.164246,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  });
+  const [loc4, setloc4] = useState({
+    latitude:28.6519500,
+    longitude:77.2314900,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+  });
   const { data, setData } = useContext(Context);
 
   const datas = {
@@ -103,6 +127,58 @@ const {location, setLocation}=useContext(Context)
             console.log("object");
           }}
           coordinate={userLocation}
+          image={require("../../assets/Marker.png")}
+        />
+        <Marker
+          onPress={() => {
+            if (show) {
+              setShow(false);
+            } else {
+              setShow(true);
+            }
+            this._start();
+            console.log("object");
+          }}
+          coordinate={loc1}
+          image={require("../../assets/Marker.png")}
+        />
+        <Marker
+          onPress={() => {
+            if (show) {
+              setShow(false);
+            } else {
+              setShow(true);
+            }
+            this._start();
+            console.log("object");
+          }}
+          coordinate={loc2}
+          image={require("../../assets/Stall.png")}
+        />
+        <Marker
+          onPress={() => {
+            if (show) {
+              setShow(false);
+            } else {
+              setShow(true);
+            }
+            this._start();
+            console.log("object");
+          }}
+          coordinate={loc3}
+          image={require("../../assets/Marker.png")}
+        />
+        <Marker
+          onPress={() => {
+            if (show) {
+              setShow(false);
+            } else {
+              setShow(true);
+            }
+            this._start();
+            console.log("object");
+          }}
+          coordinate={loc4}
           image={require("../../assets/Marker.png")}
         />
       </MapView>
