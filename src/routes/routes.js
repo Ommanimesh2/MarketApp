@@ -25,7 +25,8 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Jobs' ,
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',            
+       tabBarInactiveTintColor: 'gray',
+       headerShown:false            
       }}
     />
     <Tab.Screen 
@@ -38,9 +39,11 @@ const Routes = () => {
             source={require('../../assets/Machines.png')                  
             }/>
        ), 
+       
        tabBarActiveTintColor: 'green',
        tabBarInactiveTintColor: 'gray',
-       tabBarLabel: 'Rent'             
+       tabBarLabel: 'Rent'        ,
+       headerShown:false     
       }}
     />
     <Tab.Screen 
@@ -55,7 +58,8 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Add',
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',             
+       tabBarInactiveTintColor: 'gray',
+       headerShown:false             
       }}
     />
     <Tab.Screen 
@@ -70,7 +74,8 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Stalls'   ,
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',          
+       tabBarInactiveTintColor: 'gray',
+       headerShown:false          
       }}
     />
     <Tab.Screen 
@@ -85,7 +90,8 @@ const Routes = () => {
        ), 
        tabBarLabel: 'Labours'  ,
        tabBarActiveTintColor: 'green',
-       tabBarInactiveTintColor: 'gray',           
+       tabBarInactiveTintColor: 'gray', 
+       headerShown:false          
       }}
     />
 
