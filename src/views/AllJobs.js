@@ -9,6 +9,10 @@ const AllJobs = ({navigation}) => {
     <ScreenWrapper>
    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.app}>
       <Jobviewcard src={require(`..//../assets/phone.png`)}/>
+      <Jobviewcard src={require(`..//../assets/phone.png`)}/>
+      <Jobviewcard src={require(`..//../assets/phone.png`)}/>
+      <Jobviewcard src={require(`..//../assets/phone.png`)}/>
+      <Jobviewcard src={require(`..//../assets/phone.png`)}/>
 
    </ScrollView>
    <View style={styles.button}>

@@ -18,7 +18,6 @@ const Home = ({navigation}) => {
           <Button title='Add New Job' onPress={()=>navigation.navigate('NewJob')}/>
           <Button title='Add New Stall' onPress={()=>navigation.navigate('AddStall')}/>
           <Button title='Add New Machine' onPress={()=>navigation.navigate('AddRentMachines')}/>
-
         </View>
     </ScreenWrapper>
   );

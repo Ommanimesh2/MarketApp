@@ -1,92 +1,92 @@
-import {
+import{
   StyleSheet,
   Text,
   View,
   Pressable,
   TextInput,
   Alert,
+  Al
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import ScreenWrapper from "../components/ScreenWrapper";
 import { useContext,useState } from "react";
 import { Context } from "../context/Context";
+import { ActivityIndicator } from "react-native";
 const CreateAccount = ({ navigation }) => {
-  const initialState = {
-    phone: "",
-    password: "",
-    confirmPassword: "",
-  };
-  const [data, setData] = useState(initialState);
+  const [username,setUserName]=useState(null)
+  const [email,setEmail]=useState(null)
+  const [password,setPassword]=useState(null)
   const {user, setUser} = useContext(Context);
-  const [confirmPass, setConfirmPass] = useState(true);
+  const {loading,setLoading}=useContext(Context)
 
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-  const handleSubmit = () => {
-    if (data.password === data.confirmPassword) {
-      setConfirmPass(true);
-      registerUser();
-      navigation.navigate("MainScreens");
-    } else {
-      setConfirmPass(false);
-    }
-  };
-  async function registerUser(e) {
-    e.preventDefault();
-    const response = await fetch("http://localhost:8000/signup/", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    const userData = await response.json();
-    setUser(userData);
+  useEffect(()=>{
+   setLoading(false)
+  },[])
+  const register = (username, email, password) => {
+  setLoading(true)
+    axios
+      .post(`https://ommanimesh.pythonanywhere.com/signup/`, {
+        username,
+        email,
+        password,
+      })
+      .then(res => {
+        let userInfo = res.data;
+        console.log(userInfo);
+        setUser(userInfo.data)
+        setLoading(false)
+        navigation.navigate("MainScreens");
     
-    console.log(userData);
-  }
+      })
+      .catch(e => {
+        console.log(`register error ${e}`);
+     
+      });
+  };
+
   return (
+    !loading ?
     <View>
       <Text style={styles.signheading}>Create your account</Text>
       <TextInput
-        style={styles.input}
-        underlineColorAndroid="transparent"
-        placeholder="Phone Number"
-        placeholderTextColor="rgba(0, 0, 0, 0.7)"
-        placeholderFontSize="20"
-        autoCapitalize="none"
-        name="phone"
-      />
-      <TextInput
-        style={styles.input}
-        underlineColorAndroid="transparent"
-        placeholder="Password"
-        placeholderTextColor="rgba(0, 0, 0, 0.7)"
-        onChangeText={handleChange}
-        value={data.password}
-        placeholderFontSize="20"
-        autoCapitalize="none"
-        name="password"
-      />
-      <TextInput
-        style={styles.input}
-        underlineColorAndroid="transparent"
-        placeholder="Confirm Password"
-        placeholderTextColor="rgba(0, 0, 0, 0.7)"
-        placeholderFontSize="20"
-        autoCapitalize="none"
-        onChangeText={handleChange}
-        value={data.confirmPassword}
-        name="confirm"
 
+        style={styles.input}
+        underlineColorAndroid="transparent"
+        placeholder="username"
+        placeholderTextColor="rgba(0, 0, 0, 0.7)"
+        placeholderFontSize="20"
+        autoCapitalize="none"
+        onChangeText={text => setUserName(text)}
+        value={username}
       />
-      <Text>{confirmPass ? "signup" : "Passwords doesnt match"}</Text>
+      <TextInput
+        style={styles.input}
+        underlineColorAndroid="transparent"
+        placeholder="email"
+        placeholderTextColor="rgba(0, 0, 0, 0.7)"
+        value={email}
+        placeholderFontSize="20"
+        onChangeText={text => setEmail(text)}
+
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        underlineColorAndroid="transparent"
+        placeholder="password"
+        placeholderTextColor="rgba(0, 0, 0, 0.7)"
+        placeholderFontSize="20"
+        autoCapitalize="none"
+        onChangeText={text => setPassword(text)}
+
+        value={password}
+      />
       <View style={styles.signin}>
         <Pressable
           style={styles.signbutton}
           onPress={() => {
-          
+           register(username,email,password)
           }}
         >
           <Text style={styles.text}>Sign Up</Text>
@@ -94,9 +94,13 @@ const CreateAccount = ({ navigation }) => {
       </View>
       <Text style={styles.last}>
         Already have an account?
-        <Text style={styles.textlogin}>Log in</Text>
+        <Text style={styles.textlogin} onPress={()=>navigation.navigate("login")}>Log in</Text>
       </Text>
-    </View>
+    </View> :  <View style={[styles.that, styles.horizontal]}>
+              <ActivityIndicator size="large" color="#00ff00" />
+              </View>
+    
+
   );
 };
 
@@ -142,4 +146,13 @@ const styles = StyleSheet.create({
     marginTop: "4%",
     textAlign: "center",
   },
+  that:{
+  flex: 1,
+  justifyContent: 'center',
+},
+horizontal: {
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  padding: 10,
+},
 });

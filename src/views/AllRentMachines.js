@@ -3,16 +3,38 @@ import React from 'react'
 import ScreenWrapper from '../components/ScreenWrapper'
 import MachineCard from '../components/MachineCard'
 import { ScrollView } from 'react-native'
+import { useState,useEffect } from 'react'
+import axios from 'axios'
 const AllRentMachines = () => {
+  const [rentdata, setRentdata] = useState([])
+  useEffect(() => {
+    axios.get("https://ommanimesh.pythonanywhere.com/api/rentmachine/").then((response) => {
+        console.log(response.data);
+        setRentdata(response.data);
+      }).catch((err)=>console.log(err))
+},[])
   return (
-    <ScreenWrapper>
+<ScreenWrapper>
  <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.app}>
             
-            <MachineCard />
-            <MachineCard />
-            <MachineCard />
-            <MachineCard />
-            <MachineCard />
+ {
+  rentdata.map((e)=>{
+     return(
+       <>
+    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.app}>
+
+            <MachineCard  
+                  name={e["Name"]}
+                  Price={e["Price"]}
+ 
+            />
+     
+       
+       
+               </ScrollView>
+  
+             </>
+    ) } )}
        
        
                </ScrollView>
